@@ -1,2 +1,1 @@
-# BI_Dendogram
-Bioinformatic Assignment 4
+# Bioinformatic Assignment 4 ©Wais
