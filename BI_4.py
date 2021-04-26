@@ -57,30 +57,11 @@ sci.dendrogram(linked,
                orientation='top',
                labels=labelList,
                distance_sort='descending',
+               color_threshold=1,
+               #color threshold=0.5 would create 5 clusters as the vertical line
+               # representing the maximum distance between two points to form a cluster is lowered
+               # at 0.1 each point would be a single cluster
                show_leaf_counts=True)
-plt.show()
-#endregion
-
-#region Calculate dendogram Version 2 with possibility to enter the number of clusters
-k=4 #enter number of wanted clusters
-d = sci.distance.pdist(X)
-Z= sci.linkage(d,method='ward')
-T = sci.fcluster(Z, k, 'maxclust')
-
-# calculate labels
-labels=list('' for i in range(num_elem-1))
-for i in range(num_elem-1):
-    labels[i]=str(i)+ ',' + str(T[i])
-
-# calculate color threshold
-ct=Z[-(k-1),2]
-
-#plot
-plt.figure(figsize=(11,8))
-plt.title('Dendogram (Variable clusters)')
-plt.xlabel('Number of data point')
-plt.ylabel('Distance')
-P =sci.dendrogram(Z,labels=labels,color_threshold=ct)
 plt.show()
 #endregion
 
